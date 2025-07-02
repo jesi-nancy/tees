@@ -3,7 +3,7 @@ import WelcomePage from '@/components/WelcomePage.vue'
 import ProductList from '@/components/ProductList.vue'
 import CartPage from '@/components/CartPage.vue'
 import ProductDetail from '@/components/ProductDetail.vue'
-import PaymentPage from '../components/PaymentPage.vue'
+import PaymentPage from '@/components/PaymentPage.vue'
 
 const routes = [
   {
@@ -29,13 +29,18 @@ const routes = [
   },
   {
     path: '/payment',
-    component: () => import('@/components/PaymentPage.vue')
+    name: 'PaymentPage',
+    component: PaymentPage
   }
 ]
 
 const router = createRouter({
-  history: createWebHistory('/tees/'), // ✅ Add base URL here
-  routes
+  // Make sure the base matches your GitHub repo name for deployment
+  history: createWebHistory('/tees/'),
+  routes,
+  scrollBehavior() {
+    return { top: 0 }
+  }
 })
 
 export default router
