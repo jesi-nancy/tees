@@ -3,7 +3,7 @@ import WelcomePage from '@/components/WelcomePage.vue'
 import ProductList from '@/components/ProductList.vue'
 import CartPage from '@/components/CartPage.vue'
 import ProductDetail from '@/components/ProductDetail.vue'
-import PaymentPage from '../components/PaymentPage.vue' 
+import PaymentPage from '../components/PaymentPage.vue'
 
 const routes = [
   {
@@ -17,7 +17,7 @@ const routes = [
     component: ProductList
   },
   {
-    path: '/product/:id', // Add this route
+    path: '/product/:id',
     name: 'ProductDetail',
     component: ProductDetail,
     props: true
@@ -27,17 +27,14 @@ const routes = [
     name: 'CartPage',
     component: CartPage
   },
-  { path: '/', component: CartPage },
-  { path: '/payment', component: PaymentPage },
   {
-  path: '/payment',
-  component: () => import('@/components/PaymentPage.vue')
-}
-
+    path: '/payment',
+    component: () => import('@/components/PaymentPage.vue')
+  }
 ]
 
 const router = createRouter({
-  history: createWebHistory(),
+  history: createWebHistory('/tees/'), // ✅ Add base URL here
   routes
 })
 
