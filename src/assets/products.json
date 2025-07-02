@@ -1,0 +1,132 @@
+[
+  {
+    "id": 1,
+    "title": "Urban Tee - Classic Fit",
+    "price": 850,
+    "description": "Soft cotton classic fit T-shirt with minimalist chest print",
+    "category": "t-shirts",
+    "image": "https://m.media-amazon.com/images/I/61DPVw1xczL._SX679_.jpg",
+    "rating": {
+      "rate": 4.8,
+      "count": 120,
+      "bought": "1k bought in the last 30 days"
+    }
+  },
+  {
+    "id": 2,
+    "title": "Retro Vibe Graphic Tee",
+    "price": 750,
+    "description": "Bold retro-style graphic tee for everyday streetwear",
+    "category": "t-shirts",
+    "image": "https://m.media-amazon.com/images/I/71j2X+z7wrL._SX679_.jpg",
+    "rating": {
+      "rate": 4.7,
+      "count": 85,
+      "bought": "500 bought in the last 30 days"
+    }
+  },
+  {
+    "id": 3,
+    "title": "Casual Cotton Tee",
+    "price": 1000,
+    "description": "Premium 100% cotton crew-neck tee – all-day comfort",
+    "category": "t-shirts",
+    "image": "https://m.media-amazon.com/images/I/71CICgxeN7L._SX679_.jpg",
+    "rating": {
+      "rate": 4.9,
+      "count": 65,
+      "bought": "300 bought in the last 30 days"
+    }
+  },
+  {
+    "id": 4,
+    "title": "Tie-Dye Oversized Tee",
+    "price": 900,
+    "description": "Trendy oversized tee with pastel tie-dye finish",
+    "category": "t-shirts",
+    "image": "https://m.media-amazon.com/images/I/71A--mU5k8L._SX679_.jpg",
+    "rating": {
+      "rate": 4.6,
+      "count": 210,
+      "bought": "800 bought in the last 30 days"
+    }
+  },
+  {
+    "id": 5,
+    "title": "Minimal Pocket Tee",
+    "price": 600,
+    "description": "Basic t-shirt with stitched chest pocket and solid color",
+    "category": "t-shirts",
+    "image": "https://m.media-amazon.com/images/I/61kxa1-0mfL._SX679_.jpg",
+    "rating": {
+      "rate": 4.5,
+      "count": 320,
+      "bought": "1.5k bought in the last 30 days"
+    }
+  },
+  {
+    "id": 6,
+    "title": "Monochrome Street Tee",
+    "price": 500,
+    "description": "Sleek black tee with reflective monochrome street design",
+    "category": "t-shirts",
+    "image": "https://m.media-amazon.com/images/I/71lBqa6YeLL._SX679_.jpg",
+    "rating": {
+      "rate": 4.7,
+      "count": 180,
+      "bought": "600 bought in the last 30 days"
+    }
+  },
+  {
+    "id": 7,
+    "title": "Graphic Anime Tee",
+    "price": 750,
+    "description": "Casual anime-printed tee with pop culture design",
+    "category": "t-shirts",
+    "image": "https://m.media-amazon.com/images/I/81rQDY3I7mL._SX679_.jpg",
+    "rating": {
+      "rate": 4.6,
+      "count": 90,
+      "bought": "400 bought in the last 30 days"
+    }
+  },
+  {
+    "id": 8,
+    "title": "Gold Foil Logo Tee",
+    "price": 1200,
+    "description": "Black tee with gold foil luxury-style printed logo",
+    "category": "t-shirts",
+    "image": "https://m.media-amazon.com/images/I/71iRzPrGzML._SX679_.jpg",
+    "rating": {
+      "rate": 4.7,
+      "count": 150,
+      "bought": "700 bought in the last 30 days"
+    }
+  },
+  {
+    "id": 9,
+    "title": "Green Earth Tee",
+    "price": 650,
+    "description": "Eco-friendly tee with leaf graphic – made from organic cotton",
+    "category": "t-shirts",
+    "image": "https://m.media-amazon.com/images/I/61A3Jv8dE0L._SX679_.jpg",
+    "rating": {
+      "rate": 4.8,
+      "count": 200,
+      "bought": "900 bought in the last 30 days"
+    }
+  },
+  {
+    "id": 10,
+    "title": "Neon Glow Tee",
+    "price": 625,
+    "description": "Vibrant neon tee that glows under UV light – festival wear",
+    "category": "t-shirts",
+    "image": "https://m.media-amazon.com/images/I/61bnRNoGT8L._SX679_.jpg",
+    "rating": {
+      "rate": 4.6,
+      "count": 340,
+      "bought": "1.2k bought in the last 30 days"
+    }
+  }
+]
