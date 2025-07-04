@@ -2,15 +2,9 @@
   <div>
     <NavBar />
     <div class="container my-5">
-      <button @click="$router.go(-1)" class="btn btn-outline-secondary mb-4 premium-btn-back">
-        <i class="fas fa-arrow-left me-2"></i> Back to Products
-      </button>
-
       <div class="row g-4">
-        <div class="col-md-6">
-          <div class="premium-product-image-container">
-            <img :src="product.image" class="img-fluid rounded premium-product-image" :alt="product.title">
-          </div>
+        <div class="col-md-6 d-flex align-items-center justify-content-center">
+          <img :src="product.image" class="premium-standalone-image" :alt="product.title" />
         </div>
 
         <div class="col-md-6">
@@ -42,8 +36,8 @@
               <button @click="addToCart" class="btn btn-primary premium-add-to-cart">
                 <i class="fas fa-cart-plus me-2"></i> Add to Cart
               </button>
-              <button class="btn btn-outline-primary premium-buy-now">
-                <i class="fas fa-bolt me-2"></i> Buy Now
+              <button @click="$router.go(-1)" class="btn btn-outline-primary premium-back-btn">
+                <i class="fas fa-arrow-left me-2"></i> Back to Products
               </button>
             </div>
 
@@ -59,22 +53,6 @@
               <div class="premium-meta-item">
                 <i class="fas fa-undo me-2"></i>
                 <span>7-Day Returns</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="row mt-5">
-        <div class="col-12">
-          <div class="premium-product-specs">
-            <h4 class="premium-section-title mb-4">Specifications</h4>
-            <div class="row">
-              <div class="col-md-6" v-for="(spec, index) in specifications" :key="index">
-                <div class="premium-spec-item">
-                  <span class="premium-spec-name">{{ spec.name }}</span>
-                  <span class="premium-spec-value">{{ spec.value }}</span>
-                </div>
               </div>
             </div>
           </div>
@@ -97,16 +75,6 @@ export default {
   data() {
     return {
       product: {},
-      specifications: [
-        { name: 'Brand', value: 'Premium Brand' },
-        { name: 'Model', value: '2023 Edition' },
-        { name: 'Color', value: 'Classic Black' },
-        { name: 'Material', value: 'High-grade Materials' },
-        { name: 'Dimensions', value: '10 x 5 x 2 inches' },
-        { name: 'Weight', value: '1.2 kg' },
-        { name: 'Warranty', value: '1 Year Manufacturer' },
-        { name: 'SKU', value: 'PRD' + this.id.toString().padStart(4, '0') }
-      ]
     }
   },
   created() {
@@ -123,60 +91,44 @@ export default {
   }
 }
 </script>
+
 <style scoped>
-.premium-btn-back {
-  border-radius: 999px;
-  padding: 10px 20px;
-  font-weight: 600;
-  color: #ec4899;
-  border-color: #ec4899;
-  transition: all 0.3s ease;
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+
+* {
+  background: #0f0f0f;
+}
+
+.container {
+  background: #0f0f0f;
   font-family: 'Poppins', sans-serif;
+  color: #f5f5f5;
+  padding-top: 6rem;
+  padding-bottom: 4rem;
 }
 
-.premium-btn-back:hover {
-  background-color: #fdf2f8;
-  transform: translateX(-4px);
-  color: #db2777;
-}
-
-.premium-product-image-container {
-  border-radius: 20px;
-  overflow: hidden;
-  box-shadow: 0 10px 24px rgba(236, 72, 153, 0.15);
-  background: #fff0f6;
-  padding: 24px;
-  border: 1px solid #fce7f3;
-}
-
-.premium-product-image {
-  width: 100%;
-  height: auto;
+.premium-standalone-image {
+  max-width: 100%;
+  max-height: 500px;
   object-fit: contain;
-  max-height: 480px;
   transition: transform 0.3s ease;
+  border-radius: 12px;
 }
 
-.premium-product-image:hover {
-  transform: scale(1.02);
-}
-
-.premium-product-info {
-  padding: 20px;
-  font-family: 'Poppins', sans-serif;
+.premium-standalone-image:hover {
+  transform: scale(1.05);
 }
 
 .premium-product-title {
   font-size: 2rem;
   font-weight: 800;
-  color: #ec4899;
+  color: #ffffff;
   margin-bottom: 1rem;
-  text-shadow: 0 1px 5px rgba(236, 72, 153, 0.1);
 }
 
 .premium-rating-badge {
-  background: #fcd34d;
-  color: #78350f;
+  background: #facc15;
+  color: #000000;
   padding: 6px 14px;
   border-radius: 999px;
   font-weight: 600;
@@ -185,7 +137,7 @@ export default {
 
 .premium-review-count {
   font-size: 0.9rem;
-  color: #6b7280;
+  color: #fffcfc;
 }
 
 .premium-bought-count {
@@ -196,7 +148,7 @@ export default {
 
 .premium-price-container {
   padding: 16px 0;
-  border-bottom: 1px dashed #f9a8d4;
+  border-bottom: 1px dashed #555;
 }
 
 .premium-current-price {
@@ -207,12 +159,12 @@ export default {
 
 .premium-original-price {
   font-size: 1.1rem;
-  color: #9ca3af;
+  color: #a3a3a3;
 }
 
 .premium-discount {
-  background: #ffe4e6;
-  color: #dc2626;
+  background: #450a0a;
+  color: #f87171;
   padding: 5px 10px;
   border-radius: 8px;
   font-size: 0.85rem;
@@ -222,13 +174,13 @@ export default {
 
 .premium-product-description {
   padding: 16px 0;
-  border-bottom: 1px dashed #f3e8ff;
+  border-bottom: 1px dashed #555;
 }
 
 .premium-section-title {
   font-size: 1.1rem;
   font-weight: 700;
-  color: #ec4899;
+  color: #ffffff;
   margin-bottom: 0.75rem;
 }
 
@@ -237,7 +189,7 @@ export default {
   flex-wrap: wrap;
   gap: 12px;
   padding: 20px 0;
-  border-bottom: 1px dashed #f3e8ff;
+  border-bottom: 1px dashed #555;
 }
 
 .premium-add-to-cart {
@@ -245,32 +197,32 @@ export default {
   border-radius: 999px;
   padding: 12px;
   font-weight: 600;
-  background: linear-gradient(to right, #ec4899, #f472b6);
+  background: #ffffff;
   border: none;
-  color: white;
-  box-shadow: 0 4px 14px rgba(236, 72, 153, 0.2);
+  color: #000000;
+  box-shadow: 0 4px 14px rgba(255, 255, 255, 0.1);
   transition: all 0.3s ease;
 }
 
 .premium-add-to-cart:hover {
   transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(236, 72, 153, 0.3);
+  background: #f1f1f1;
 }
 
-.premium-buy-now {
+.premium-back-btn {
   flex: 1;
   border-radius: 999px;
   padding: 12px;
   font-weight: 600;
-  border: 2px solid #ec4899;
-  color: #ec4899;
-  background: white;
+  background: transparent;
+  color: #ffffff;
+  border: 2px solid #ffffff;
   transition: all 0.3s ease;
 }
 
-.premium-buy-now:hover {
-  background: #ec4899;
-  color: white;
+.premium-back-btn:hover {
+  background: #ffffff;
+  color: #000000;
 }
 
 .premium-product-meta {
@@ -283,40 +235,13 @@ export default {
 .premium-meta-item {
   display: flex;
   align-items: center;
-  color: #6b7280;
+  color: #a3a3a3;
   font-size: 0.9rem;
 }
 
 .premium-meta-item i {
-  color: #ec4899;
+  color: #ffffff;
   margin-right: 6px;
-}
-
-.premium-product-specs {
-  background: white;
-  border-radius: 20px;
-  padding: 24px;
-  box-shadow: 0 6px 18px rgba(236, 72, 153, 0.08);
-  border: 1px solid #f3e8ff;
-  margin-top: 32px;
-  font-family: 'Poppins', sans-serif;
-}
-
-.premium-spec-item {
-  display: flex;
-  justify-content: space-between;
-  padding: 12px 0;
-  border-bottom: 1px solid #f9fafb;
-}
-
-.premium-spec-name {
-  color: #9ca3af;
-  font-weight: 500;
-}
-
-.premium-spec-value {
-  color: #1f2937;
-  font-weight: 600;
 }
 
 @media (max-width: 768px) {
@@ -333,4 +258,3 @@ export default {
   }
 }
 </style>
-

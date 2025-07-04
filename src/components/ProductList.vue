@@ -4,7 +4,7 @@
     <div class="container my-5">
       <h2 class="text-center mb-4 title">Top Selling Products</h2>
 
-      <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+      <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4">
         <div class="col" v-for="product in limitedProducts" :key="product.id">
           <div class="card product-card h-100">
             <img :src="product.image" class="card-img-top product-img" :alt="product.title" />
@@ -28,6 +28,10 @@
         </div>
       </div>
     </div>
+
+    <footer class="text-center text-white py-4">
+      <p>&copy; 2023 TeesPoint. All rights reserved.</p>
+    </footer>
   </div>
 </template>
 
@@ -59,60 +63,83 @@ export default {
 </script>
 
 <style scoped>
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+
+
+* {
+  background-color: #0f0f0f;
+}
+
+.container {
+  background-color: #0f0f0f;
+  color: #f5f5f5;
+  padding-top: 6rem;
+  padding-bottom: 5rem;
+  min-height: 100vh;
+}
+
 .title {
-  font-size: 2rem;
-  color: #ec4899; /* Matching the brand pink */
+  font-size: 2.2rem;
+  color: #ffffff;
   font-weight: 700;
-  font-family: 'Poppins', sans-serif;
-  text-shadow: 0 1px 4px rgba(236, 72, 153, 0.15);
+  text-align: center;
+  margin-bottom: 2rem;
+  
 }
 
 .product-card {
-  border: 1px solid #f3e8ff;
-  border-radius: 16px;
-  box-shadow: 0 6px 18px rgba(236, 72, 153, 0.05);
-  transition: all 0.3s ease;
-  background: #fff;
+  background: #1a1a1a;
+  border-radius: 18px;
+  border: 1px solid #292929;
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.4);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
   overflow: hidden;
+  display: flex;
+  flex-direction: column;
 }
 
 .product-card:hover {
   transform: translateY(-6px);
-  box-shadow: 0 12px 30px rgba(236, 72, 153, 0.15);
+  box-shadow: 0 16px 40px rgba(255, 255, 255, 0.08);
 }
 
 .product-img {
   height: 220px;
   object-fit: contain;
-  padding: 20px;
-  background-color: #fdf4ff;
-  border-bottom: 1px solid #f3e8ff;
+  padding: 1.5rem;
+  background-color: #111;
+  border-bottom: 1px solid #292929;
+}
+
+.card-body {
+  padding: 1.2rem;
+  display: flex;
+  flex-direction: column;
 }
 
 .card-title {
-  font-size: 1.05rem;
+  font-size: 1.1rem;
   font-weight: 700;
-  color: #1f2937;
-  font-family: 'Poppins', sans-serif;
+  color: #ffffff;
   margin-bottom: 0.5rem;
 }
 
 .card-text {
   font-size: 0.9rem;
-  color: #6b7280;
+  color: #bbbbbb;
   min-height: 48px;
   margin-bottom: 0.5rem;
 }
 
 .ratings {
   font-size: 0.85rem;
-  color: #f59e0b;
+  color: #facc15;
   margin-bottom: 0.25rem;
 }
 
 .price {
   font-weight: bold;
-  font-size: 1.15rem;
+  font-size: 1.2rem;
   color: #10b981;
   margin-bottom: 0.75rem;
 }
@@ -121,30 +148,34 @@ export default {
   border-radius: 999px;
   font-weight: 600;
   font-size: 0.85rem;
-  font-family: 'Poppins', sans-serif;
   padding: 0.4rem 1rem;
-  transition: background 0.3s ease;
+  transition: all 0.3s ease;
 }
 
 .btn-outline-primary {
-  color: #ec4899;
-  border: 1px solid #ec4899;
+  color: #ffffff;
+  border: 1px solid #ffffff;
   background-color: transparent;
 }
 
 .btn-outline-primary:hover {
-  background-color: #fce7f3;
-  color: #db2777;
+  background-color: #ffffff;
+  color: #000000;
 }
 
 .btn-primary {
-  background: linear-gradient(to right, #ec4899, #f472b6);
+  background-color: #ffffff;
   border: none;
-  color: white;
+  color: #000000;
 }
 
 .btn-primary:hover {
-  background: linear-gradient(to right, #db2777, #ec4899);
+  background-color: #e5e5e5;
+}
+
+@media (max-width: 768px) {
+  .product-img {
+    height: 180px;
+  }
 }
 </style>
-

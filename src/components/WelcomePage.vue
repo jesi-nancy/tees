@@ -1,19 +1,13 @@
 <template>
   <div class="tees-point">
     <NavBar />
-    <div class="hero-wrapper d-flex flex-column flex-lg-row align-items-center justify-content-center">
-      <div class="text-section text-center text-lg-start p-4 p-lg-5">
-        <h1 class="headline mb-3">Welcome to <span class="highlight">Tees Point</span></h1>
-        <p class="subtext">Discover your style – premium tees, bold designs, and unbeatable comfort.</p>
-        <router-link to="/product-list" class="btn btn-shop mt-4">Shop Tees</router-link>
-      </div>
-
-      <div class="image-section p-4 p-lg-5">
-        <img
-          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSh6bk-gBdsh3_pOiAboE6w8aic-89JISVYCg&s"
-          alt="T-shirt Mockup"
-          class="img-fluid hero-image"
-        />
+    <div class="hero-wrapper">
+      <div class="text-section text-center">
+        <h1 class="headline">JN – <span class="highlight">Tees studio</span></h1>
+        <p class="subtext">
+          Step into your style zone – shop comfy, bold, and beautiful premium tees crafted just for you.
+        </p>
+        <router-link to="/product-list" class="btn btn-shop mt-4">Explore Collection</router-link>
       </div>
     </div>
   </div>
@@ -31,87 +25,84 @@ export default {
 </script>
 
 <style scoped>
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Inter:wght@400;500&display=swap');
+
 .tees-point {
-  background: linear-gradient(135deg, #fef6f9, #f3e8ff);
   min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Inter', sans-serif;
+  background: #000;
+  color: #fff;
+  position: relative;
+  overflow: hidden;
 }
 
 .hero-wrapper {
-  flex: 1;
+  height: 100vh;
   display: flex;
-  flex-direction: column;
+  align-items: center;
   justify-content: center;
-  min-height: 90vh;
-  padding: 2rem 0;
+  text-align: center;
+  padding: 0 1rem;
 }
 
 .text-section {
-  flex: 1;
-  max-width: 600px;
+  max-width: 800px;
+  animation: fadeInUp 1.2s ease-out both;
 }
 
 .headline {
-  font-size: 3rem;
-  font-weight: 800;
-  color: #111827;
+  font-family: 'Playfair Display', serif;
+  font-size: 3.5rem;
+  font-weight: 600;
+  color: #fff;
+  margin-bottom: 1rem;
+  letter-spacing: -1px;
 }
 
 .highlight {
-  color: #ec4899;
-  text-shadow: 0 2px 10px rgba(236, 72, 153, 0.3);
+  color: #fff;
 }
 
 .subtext {
   font-size: 1.25rem;
-  color: #6b7280;
+  color: #ccc;
   margin-top: 1rem;
-  font-weight: 500;
   line-height: 1.6;
+  font-weight: 400;
 }
 
 .btn-shop {
-  background: linear-gradient(to right, #ec4899, #f472b6);
-  color: white;
-  padding: 0.75rem 2rem;
-  border-radius: 30px;
+  margin-top: 2rem;
+  background: #fff;
+  color: #000;
+  padding: 0.8rem 2.2rem;
+  border-radius: 40px;
   font-size: 1rem;
-  font-weight: 600;
+  font-weight: 500;
   border: none;
-  box-shadow: 0 4px 20px rgba(236, 72, 153, 0.2);
-  transition: transform 0.3s ease;
   text-decoration: none;
+  transition: background 0.3s ease, transform 0.3s ease;
 }
 
 .btn-shop:hover {
-  background: linear-gradient(to right, #db2777, #ec4899);
+  background: #f2f2f2;
   transform: translateY(-3px);
 }
 
-.image-section {
-  flex: 1;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.hero-image {
-  max-width: 100%;
-  height: auto;
-  animation: floatUp 4s ease-in-out infinite;
-  border-radius: 12px;
-}
-
-@keyframes floatUp {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-12px); }
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 @media (max-width: 768px) {
   .headline {
-    font-size: 2.2rem;
+    font-size: 2.5rem;
   }
 
   .subtext {

@@ -4,117 +4,47 @@
 
     <div class="payment-container container">
       <div class="row">
-
+        <!-- Left: Delivery Info -->
         <div class="col-md-6 customer-details">
-          <h3>Delivery Information</h3>
-          <form @submit.prevent="submitForm">
-            <div class="form-group">
-              <label>Full Name</label>
-              <input v-model="form.name" class="form-control" required />
-            </div>
-
-            <div class="form-group">
-              <label>Flat / House Number</label>
-              <input v-model="form.flat" class="form-control" required />
-            </div>
-
-            <div class="form-group">
-              <label>Street Address</label>
-              <input v-model="form.address" class="form-control" required />
-            </div>
-
-            <div class="form-group">
-              <label>District</label>
-              <input v-model="form.district" class="form-control" required />
-            </div>
-
-            <div class="form-group">
-              <label>State</label>
-              <input v-model="form.state" class="form-control" required />
-            </div>
-
-            <div class="form-group">
-              <label>Pincode</label>
-              <input v-model="form.pincode" class="form-control" required />
-            </div>
+          <h3>Delivery Info</h3>
+          <form @submit.prevent="payNow">
+            <input v-model="form.name" placeholder="Full Name" class="form-control" required />
+            <input v-model="form.address" placeholder="Street Address" class="form-control" required />
+            <input v-model="form.district" placeholder="District" class="form-control" required />
+            <input v-model="form.state" placeholder="State" class="form-control" required />
+            <input v-model="form.pincode" placeholder="Pincode" class="form-control" required />
           </form>
         </div>
 
+        <!-- Right: Payment Options -->
         <div class="col-md-6 payment-options">
-          <h3>Select Payment Method</h3>
+          <h3>Payment Method</h3>
 
-          <div class="payment-option">
-            <div class="form-check">
-              <input class="form-check-input" type="radio" id="upi" value="UPI" v-model="selectedPayment" />
-              <label class="form-check-label" for="upi">
-                Amazon Pay UPI - 
-              </label>
-            </div>
+          <div class="form-check" v-for="method in methods" :key="method.id">
+            <input class="form-check-input" type="radio" :id="method.id" :value="method.label" v-model="selectedPayment" />
+            <label class="form-check-label" :for="method.id">{{ method.label }}</label>
           </div>
 
-          <div class="payment-option">
-            <div class="form-check">
-              <input class="form-check-input" type="radio" id="card" value="Card" v-model="selectedPayment" />
-              <label class="form-check-label" for="card">
-                Credit or Debit Card
-                <img src="https://img.icons8.com/color/48/000000/visa.png" class="card-icon" />
-                <img src="https://img.icons8.com/color/48/000000/mastercard.png" class="card-icon" />
-                <img src="https://img.icons8.com/color/48/000000/rupay.png" class="card-icon" />
-              </label>
-            </div>
-          </div>
-
-          <div class="payment-option">
-            <div class="form-check">
-              <input class="form-check-input" type="radio" id="netbanking" value="Net Banking" v-model="selectedPayment" />
-              <label class="form-check-label" for="netbanking">Net Banking</label>
-            </div>
-            <select class="form-select mt-2" v-if="selectedPayment === 'Net Banking'">
-              <option disabled selected>Choose a bank</option>
+          <div v-if="selectedPayment === 'Net Banking'" class="mt-2">
+            <select class="form-select">
+              <option selected disabled>Select Bank</option>
               <option>SBI</option>
-              <option>ICICI</option>
               <option>HDFC</option>
-              <option>Axis Bank</option>
+              <option>ICICI</option>
+              <option>Axis</option>
             </select>
           </div>
 
-          <div class="payment-option highlight" v-if="selectedPayment === 'Other UPI'">
-            <div class="form-check">
-              <input class="form-check-input" type="radio" id="otherUpi" value="Other UPI" v-model="selectedPayment" />
-              <label class="form-check-label" for="otherUpi">Other UPI Apps</label>
-            </div>
-            <label class="form-label mt-2">Enter your UPI ID</label>
-            <div class="input-group">
-              <input type="text" class="form-control" v-model="upiId" placeholder="name@bank" />
-              <button class="btn btn-warning">Verify</button>
-            </div>
-            <small class="text-muted">Format: name/phone@bankname</small>
+          <div v-if="selectedPayment === 'UPI'" class="mt-3">
+            <input type="text" class="form-control" v-model="upiId" placeholder="Enter UPI ID (e.g. name@bank)" />
           </div>
 
-          <div class="payment-option">
-            <div class="form-check">
-              <input class="form-check-input" type="radio" id="cod" value="COD" v-model="selectedPayment" />
-              <label class="form-check-label" for="cod">
-                Cash on Delivery / Pay on Delivery
-              </label>
-            </div>
-          </div>
-
-          <button class="btn btn-success w-100 mt-4" @click="payNow">
-            <i class="fas fa-money-check-alt me-2"></i>Pay Now
+          <button class="pay-btn mt-4 w-100" @click="payNow">
+            <i class="fas fa-check-circle me-2"></i>Confirm & Pay
           </button>
         </div>
       </div>
     </div>
-
-    <!-- <footer class="payment-footer">
-      <img
-        src="https://cdn-icons-png.flaticon.com/512/1170/1170678.png"
-        alt="Payment App Logo"
-        class="footer-logo"
-      />
-      <p>DioDap Payments &copy; 2025</p>
-    </footer> -->
   </div>
 </template>
 
@@ -127,142 +57,104 @@ export default {
     return {
       form: {
         name: '',
-        flat: '',
         address: '',
         district: '',
         state: '',
         pincode: ''
       },
-      selectedPayment: 'UPI',
-      upiId: ''
+      selectedPayment: '',
+      upiId: '',
+      methods: [
+        { id: 'upi', label: 'UPI' },
+        { id: 'card', label: 'Card' },
+        { id: 'netbanking', label: 'Net Banking' },
+        { id: 'cod', label: 'Cash on Delivery' }
+      ]
     }
   },
   methods: {
     payNow() {
-      alert(`Payment Method: ${this.selectedPayment}\nName: ${this.form.name}`);
+      const { name, address, district, state, pincode } = this.form;
+      if (!name || !address || !district || !state || !pincode) {
+        alert('❌ Please fill all delivery fields.');
+        return;
+      }
+
+      if (!this.selectedPayment) {
+        alert('❌ Please select a payment method.');
+        return;
+      }
+
+      alert('✅ Order placed successfully!');
+      this.$router.push('/'); // redirect to homepage
     }
   }
 }
 </script>
+
 <style scoped>
 .payment-page {
-  background: linear-gradient(to bottom right, #fff1f2, #fae8ff);
+  background: #0f0f0f;
   min-height: 100vh;
-  padding-bottom: 100px;
+  padding: 2rem 0;
   font-family: 'Poppins', sans-serif;
+  color: #ffffff;
 }
 
 .payment-container {
-  background: #ffffff;
-  padding: 2.5rem;
-  margin-top: 2rem;
+  background: #1a1a1a;
+  padding: 2rem;
   border-radius: 20px;
-  box-shadow: 0 12px 40px rgba(236, 72, 153, 0.1);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
 }
 
 h3 {
-  font-weight: 700;
-  margin-bottom: 1.8rem;
-  font-size: 1.6rem;
-  color: #ec4899;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  font-size: 1.4rem;
+  color: #ffffff;
 }
 
-.form-group {
-  margin-bottom: 1.25rem;
-}
-
-.form-control {
+.form-control,
+.form-select {
+  background: #121212;
+  border: 1px solid #333;
+  color: #fff;
   border-radius: 12px;
   padding: 0.85rem 1rem;
-  border: 1px solid #e5e7eb;
-  transition: border-color 0.2s ease;
-  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.03);
+  margin-bottom: 1rem;
+  font-size: 0.95rem;
 }
 
-.form-control:focus {
-  outline: none;
-  border-color: #ec4899;
-  box-shadow: 0 0 0 3px rgba(236, 72, 153, 0.15);
+.form-control::placeholder {
+  color: #aaa;
 }
 
-.payment-option {
-  background: #fdf4ff;
-  border: 2px solid transparent;
-  border-radius: 14px;
-  padding: 1.2rem 1rem;
-  margin-bottom: 1.2rem;
+.form-check {
+  margin-bottom: 0.8rem;
+}
+
+.form-check-input {
+  accent-color: #ffffff;
+}
+
+.form-check-label {
+  margin-left: 0.5rem;
+  color: #f5f5f5;
+}
+
+.pay-btn {
+  background: #ffffff;
+  color: #000;
+  border: none;
+  padding: 0.85rem;
+  font-weight: bold;
+  border-radius: 999px;
+  font-size: 1rem;
   transition: all 0.3s ease;
 }
 
-.payment-option:hover {
-  border-color: #d8b4fe;
-  background-color: #faf5ff;
-}
-
-.payment-option.highlight {
-  border: 2px solid #f59e0b;
-  background-color: #fffbea;
-}
-
-.card-icon {
-  height: 28px;
-  margin-left: 10px;
-}
-
-.input-group {
-  display: flex;
-  align-items: center;
-  margin-top: 0.5rem;
-  gap: 0.5rem;
-}
-
-.input-group .form-control {
-  flex: 1;
-}
-
-.input-group .btn {
-  border-radius: 8px;
-  padding: 0.6rem 1rem;
-  font-weight: 500;
-  background: #f59e0b;
-  color: white;
-  border: none;
-}
-
-.input-group .btn:hover {
-  background: #d97706;
-}
-
-.btn-success {
-  background: linear-gradient(to right, #ec4899, #f472b6);
-  border: none;
-  padding: 0.9rem;
-  font-weight: 600;
-  border-radius: 999px;
-  font-size: 1.1rem;
-  box-shadow: 0 6px 18px rgba(236, 72, 153, 0.3);
-}
-
-.btn-success:hover {
-  background: #db2777;
-  transform: translateY(-2px);
-}
-
-.payment-footer {
-  position: fixed;
-  bottom: 0;
-  width: 100%;
-  background: #1f2937;
-  color: #ffffff;
-  text-align: center;
-  padding: 1rem 0;
-  box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.1);
-}
-
-.footer-logo {
-  width: 44px;
-  height: 44px;
-  margin-bottom: 0.3rem;
-  filter: drop-shadow(0 1px 4px rgba(255, 255, 255, 0.2));
+.pay-btn:hover {
+  background: #e5e5e5;
 }
 </style>

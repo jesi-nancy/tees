@@ -63,31 +63,37 @@ export default {
   }
 }
 </script>
+
 <style scoped>
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+
+* {
+  background: #0f0f0f;
+}
+
 .cart-container {
   padding: 3rem 1rem;
   max-width: 960px;
   margin: 0 auto;
-  background: linear-gradient(145deg, #fff1f2, #fce7f3);
-  border-radius: 24px;
-  box-shadow: 0 10px 30px rgba(236, 72, 153, 0.15);
-  font-family: 'Poppins', sans-serif;
+  background: #0f0f0f;
+  border-radius: 20px;
+  color: #f5f5f5;
+  margin-top: 5%;
 }
 
 .cart-title {
   text-align: center;
   font-size: 2.3rem;
   font-weight: 800;
-  color: #ec4899;
+  color: #ffffff;
   margin-bottom: 2rem;
-  text-shadow: 0 2px 6px rgba(236, 72, 153, 0.1);
 }
 
 .table-wrapper {
   overflow-x: auto;
-  background: #fff;
+  background: #1a1a1a;
   border-radius: 16px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
 }
 
 .cart-table {
@@ -100,19 +106,20 @@ export default {
 .cart-table td {
   padding: 1rem;
   font-size: 1rem;
-  border-bottom: 1px solid #f3f4f6;
+  border-bottom: 1px solid #2d2d2d;
+  color: #f5f5f5;
 }
 
 .cart-table th {
-  background-color: #ec4899;
-  color: white;
+  background-color: #ffffff;
+  color: #000000;
   text-transform: uppercase;
   letter-spacing: 0.05em;
   font-size: 0.9rem;
 }
 
 .cart-table tr:hover {
-  background-color: #fdf2f8;
+  background-color: #111;
 }
 
 .cart-summary {
@@ -121,10 +128,10 @@ export default {
   flex-wrap: wrap;
   justify-content: space-between;
   align-items: center;
-  background: #fff;
+  background: #1a1a1a;
   padding: 2rem;
   border-radius: 16px;
-  box-shadow: 0 4px 14px rgba(236, 72, 153, 0.08);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.4);
   gap: 1rem;
 }
 
@@ -136,46 +143,46 @@ export default {
 
 .summary-text h4 {
   font-size: 1.5rem;
-  color: #1f2937;
+  color: #ffffff;
 }
 
 .amount {
   font-size: 1.7rem;
   font-weight: bold;
-  color: #10b981;
+  color: #ffffff;
 }
 
 .checkout-btn {
-  background: linear-gradient(to right, #ec4899, #f472b6);
-  color: white;
+  background: #ffffff;
+  color: #000000;
   border: none;
   padding: 0.8rem 2rem;
   font-size: 1rem;
   font-weight: 600;
   border-radius: 999px;
   transition: all 0.3s ease;
-  box-shadow: 0 6px 18px rgba(236, 72, 153, 0.25);
+  box-shadow: 0 6px 18px rgba(255, 255, 255, 0.2);
   cursor: pointer;
 }
 
 .checkout-btn:hover {
-  background: #db2777;
+  background: #f1f1f1;
   transform: translateY(-2px);
 }
 
 .empty-cart {
   text-align: center;
   padding: 4rem 2rem;
-  background-color: #fff0f6;
+  background-color: #1a1a1a;
   border-radius: 20px;
-  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.4);
 }
 
 .empty-icon {
   width: 120px;
-  opacity: 0.8;
+  opacity: 0.85;
   margin-bottom: 1rem;
-  filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.1));
+  filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.3));
 }
 
 .empty-message {
@@ -185,4 +192,4 @@ export default {
   font-weight: 500;
 }
 </style>
-
+``

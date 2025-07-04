@@ -1,22 +1,24 @@
 <template>
-  <nav class="glass-navbar">
+  <nav class="navbar-dark">
     <div class="nav-container">
-      <router-link class="logo" to="/">
-        <i class="fa-solid fa-shirt"></i> Tees Point
+      <router-link class="brand" to="/">
+        JN <span class="highlight">Tees Studio</span>
       </router-link>
 
-      <button class="menu-toggle" @click="isCollapsed = !isCollapsed">
-        <span :class="{ open: isCollapsed }" class="menu-icon"></span>
-      </button>
+      <div class="nav-actions">
+        <button class="menu-toggle" @click="isCollapsed = !isCollapsed">
+          <span :class="{ open: isCollapsed }" class="menu-icon"></span>
+        </button>
 
-      <div class="nav-links" :class="{ open: isCollapsed }">
-        <router-link class="nav-item" to="/">Home</router-link>
-        <router-link class="nav-item" to="/product-list">Products</router-link>
-        <router-link class="nav-item cart" to="/cart">
-          <i class="fa-solid fa-cart-shopping"></i>
-          <span class="cart-text">Cart</span>
-          <span class="badge">{{ cartCount }}</span>
-        </router-link>
+        <div class="nav-links" :class="{ open: isCollapsed }">
+          <router-link class="nav-item" to="/">Home</router-link>
+          <router-link class="nav-item" to="/product-list">Products</router-link>
+          <router-link class="nav-item cart" to="/cart">
+            <i class="fa-solid fa-cart-shopping"></i>
+            <span class="cart-text">Cart</span>
+            <span class="badge">{{ cartCount }}</span>
+          </router-link>
+        </div>
       </div>
     </div>
   </nav>
@@ -51,85 +53,51 @@ export default {
 </script>
 
 <style scoped>
-.glass-navbar {
-  backdrop-filter: blur(16px);
-  background: linear-gradient(135deg, #fef6f9, #f3e8ff);
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
-  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
-  position: sticky;
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap');
+
+.navbar-dark {
+  background: #000;
+  color: white;
+  font-family: 'Inter', sans-serif;
+  padding: 0.8rem 2rem;
+  position: fixed;
   top: 0;
-  z-index: 999;
-  padding: 0.75rem 1.5rem;
-  transition: all 0.3s ease;
-  font-family: 'Poppins', sans-serif;
+  width: 100%;
+  z-index: 1000;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
 }
 
 .nav-container {
   display: flex;
-  align-items: center;
   justify-content: space-between;
-}
-
-.logo {
-  font-size: 1.8rem;
-  font-weight: 800;
-  color: #ec4899;
-  display: flex;
   align-items: center;
-  gap: 8px;
-  text-decoration: none;
-  font-family: 'Poppins', sans-serif;
+  max-width: 1200px;
+  margin: auto;
+  width: 100%;
 }
 
-.logo:hover {
-  color: #db2777;
-}
-
-/* Navigation Links */
-.nav-links {
-  display: flex;
-  align-items: center;
-  gap: 20px;
-}
-
-.nav-item {
-  color: #7c3aed;
-  font-size: 1rem;
-  font-weight: 500;
-  text-decoration: none;
-  padding: 8px 14px;
-  border-radius: 20px;
-  transition: all 0.3s ease;
-}
-
-.nav-item:hover {
-  background-color: #f5d0fe;
-  color: #9333ea;
-}
-
-/* Cart Style */
-.cart {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  position: relative;
-}
-
-.cart-text {
-  margin-left: 4px;
-}
-
-.badge {
-  background-color: #f43f5e;
-  color: #fff;
-  border-radius: 999px;
-  padding: 3px 8px;
-  font-size: 0.75rem;
+.brand {
+  font-size: 1.6rem;
   font-weight: 600;
-  margin-left: 4px;
+  color: white;
+  text-decoration: none;
+  letter-spacing: 1px;
 }
 
-/* Hamburger */
+.highlight {
+  color: #ccc;
+}
+
+.brand:hover {
+  color: #eee;
+}
+
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
 .menu-toggle {
   display: none;
   background: none;
@@ -138,34 +106,33 @@ export default {
 }
 
 .menu-icon {
-  display: block;
-  width: 22px;
+  width: 24px;
   height: 2px;
-  background-color: #ec4899;
+  background: white;
   position: relative;
-  transition: all 0.3s ease;
+  transition: 0.3s ease;
 }
 
 .menu-icon::before,
 .menu-icon::after {
   content: '';
-  position: absolute;
-  width: 22px;
+  width: 24px;
   height: 2px;
-  background-color: #ec4899;
-  transition: all 0.3s ease;
+  background: white;
+  position: absolute;
+  transition: 0.3s ease;
 }
 
 .menu-icon::before {
-  top: -7px;
+  top: -6px;
 }
 
 .menu-icon::after {
-  top: 7px;
+  top: 6px;
 }
 
 .menu-icon.open {
-  background-color: transparent;
+  background: transparent;
 }
 
 .menu-icon.open::before {
@@ -178,6 +145,45 @@ export default {
   top: 0;
 }
 
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.nav-item {
+  color: #ccc;
+  text-decoration: none;
+  font-size: 1rem;
+  padding: 8px 12px;
+  border-radius: 6px;
+  transition: all 0.3s ease;
+}
+
+.nav-item:hover {
+  background: rgba(255, 255, 255, 0.05);
+  color: white;
+}
+
+.cart {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.badge {
+  position: absolute;
+  top: -6px;
+  right: -10px;
+  background: #fff;
+  color: #000;
+  border-radius: 12px;
+  padding: 2px 6px;
+  font-size: 0.7rem;
+  font-weight: 600;
+}
+
 /* Responsive */
 @media (max-width: 768px) {
   .menu-toggle {
@@ -185,19 +191,17 @@ export default {
   }
 
   .nav-links {
-    flex-direction: column;
-    align-items: flex-start;
-    background-color: #fff0f5;
     position: absolute;
-    top: 70px;
-    left: 0;
-    right: 0;
-    padding: 1rem 1.5rem;
-    border-top: 1px solid #f3e8ff;
+    top: 64px;
+    right: 20px;
+    background: #111;
+    border-radius: 10px;
+    flex-direction: column;
+    padding: 1rem;
     transform: scaleY(0);
     transform-origin: top;
     transition: transform 0.3s ease;
-    z-index: 998;
+    z-index: 999;
   }
 
   .nav-links.open {
@@ -206,7 +210,8 @@ export default {
 
   .nav-item {
     width: 100%;
-    margin-bottom: 10px;
+    text-align: center;
+    padding: 12px;
   }
 }
 </style>
